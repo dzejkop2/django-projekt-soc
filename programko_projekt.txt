@@ -1,0 +1,18 @@
+programko projekt
+
+novy django projekt - nazov priezvisko
+
+modely- 1. téma (projektu na SOČ): Názov (povinny),Popis (povinny),Konzultant(FK)(povinny),Pridelený žiak(FK),Odbor(FK)(povinny)(vyhladat SOC odbory),
+	Dostupnosť(Voľné,Čakajúce,Obsadené)(povinny, auto: volna),Kontroly konzultantov(Počet:1,2,3)
+	2. učiteľ : jako v školskej robote + email heslo ku prihlasovaniu
+	3. študent : tiež ako učiteľ, id, priezvisko,meno, trieda
+
+Endpointy- 1. témy - vsetko o nich, filtrovanie, prioritne zobraziť voľné + podľa abecedy
+	   2. ucitel/{id} - všetky temy čo ma konzultant
+	   3. student/{id} - info o praci ktoru ma žiak vybranu
+	   4. tema/{id} - výpis o téme
+	   5. statistic - štatisktiky - pocet tem, schvalené temy, čakajúce témy,volne temy, pocet ucitelov, studenti
+	   
+
+	   
+	

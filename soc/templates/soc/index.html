@@ -1,0 +1,13 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+{% for tema in temy %}
+<p>{{tema.nazov}} {{tema.popis}} {{tema.conzultant}} {{tema.student}} {{tema.odbor}} {{tema.dostupnost}} {{tema.kontroly}}</p>
+{% endfor %}
+</body>
+</html>
