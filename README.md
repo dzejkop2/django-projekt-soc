@@ -1,0 +1,1 @@
+# soc-django-projekt
