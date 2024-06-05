@@ -1,0 +1,34 @@
+body {
+    background-color: #f0f0f0;
+    font-family: sans-serif;
+}
+details {
+    padding: 0vw 1vw 0vw 1vw;
+    background-color: #f78e8e;
+    border-radius: 5px;
+    margin-bottom: 15px;
+}
+details:nth-child(even) {
+    background-color: #f89797;
+}
+details:last-child {
+    margin-bottom: 0;
+}
+summary {
+    font-size: 18px;
+    font-weight: bold;
+    cursor: pointer;
+    display: flex;
+}
+details[open] {
+    background-color: #f78e8e;
+}
+details[open] summary {
+    background-color: #f78e8e;
+}
+.right {
+    align-content: end;
+}
+.left {
+    min-width: 95%;
+}

@@ -1,13 +1,22 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <link rel="stylesheet" href="{% static 'soc/style.css' %}">
 </head>
 <body>
-{% for tema in temy %}
-<p>{{tema.nazov}} {{tema.popis}} {{tema.conzultant}} {{tema.student}} {{tema.odbor}} {{tema.dostupnost}} {{tema.kontroly}}</p>
-{% endfor %}
+    {{ temy|json_script:"temy" }}    
+    {{ odbory|json_script:"odbory" }}
+    {{ ucitelia|json_script:"ucitelia" }}
+    {{ studenti|json_script:"studenti" }}
+
+    <select id="filter_test">
+        <option value="">Všetky</option>
+    </select>
+    <div id="items"></div>
+    <script id="filter" src="{% static 'soc/filter.js' %}" type="module"></script>
 </body>
 </html>

@@ -1,0 +1,17 @@
+Odbor 01 - Problematika voľného času
+Odbor 02 - Matematika, fyzika
+Odbor 03 - Chémia, potravinárstvo
+Odbor 04 - Biológia
+Odbor 05 - Životné prostredie, geografia, geológia
+Odbor 06 - Zdravotníctvo a farmakológia
+Odbor 07 - Pôdohospodárstvo (poľnohospodárstvo, lesné a vodné hospodárstvo)
+Odbor 08 - Cestovný ruch, hotelierstvo, gastronómia
+Odbor 09 - Strojárstvo, hutníctvo, doprava
+Odbor 10 - Stavebníctvo, geodézia, kartografia
+Odbor 11 - Informatika
+Odbor 12 - Elektrotechnika, hardware, mechatronika
+Odbor 13 - História, filozofia, právne vedy
+Odbor 14 - Tvorba učebných pomôcok, didaktické technológie
+Odbor 15 - Ekonomika a riadenie
+Odbor 16 - Teória kultúry, umenie, umelecká, odevná tvorba
+Odbor 17 - Pedagogika, psychológia,  sociológia
