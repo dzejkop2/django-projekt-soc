@@ -2,18 +2,28 @@ const temy = JSON.parse(document.getElementById('temy').textContent);
 const odbory = JSON.parse(document.getElementById('odbory').textContent);
 const ucitelia = JSON.parse(document.getElementById('ucitelia').textContent)
 const studenti = JSON.parse(document.getElementById('studenti').textContent)
-let filter_test = document.getElementById("filter_test")
+let filters = document.getElementById("filters")
+let filter_odbor = document.getElementById("filter_odbor")
+let filter_konzultant = document.getElementById("filter_konzultant")
+let filter_dostupnost = document.getElementById("filter_dostupnost")
 let table = document.getElementById("items")
 
-draw_table();
-
-filter_test.addEventListener("change",draw_table)
+console.log(temy)
 odbory.forEach(odbor => {
     let opt = document.createElement('option');
     opt.value = odbor.id;
     opt.textContent = `${odbor.cislo} - ${odbor.nazov}`;
-    filter_test.appendChild(opt);
+    filter_odbor.appendChild(opt);
 });
+
+ucitelia.forEach(ucitel => {
+    let opt = document.createElement("option");
+    opt.value = ucitel.id;
+    opt.textContent = `${ucitel.meno} ${ucitel.priezvisko}`;
+    filter_konzultant.appendChild(opt)
+});
+
+filters.addEventListener("change", draw_table)
 
 function draw(tema) {
     let konzultant_meno, student_meno, odbor_nazov;
@@ -74,20 +84,62 @@ function draw(tema) {
     info.appendChild(kontroly);
 }
 
+function filter_odbor_func() {
+    let arr = Array();
+    temy.forEach(tema => {
+        if(tema.odbor_id == filter_odbor.value) {
+            arr.push(temy.indexOf(tema));
+        } else if(filter_odbor.value == "") {
+            arr.push(temy.indexOf(tema));
+        } 
+    });
+    return arr;
+};
+
+function filter_konzultant_func() {
+    let arr = Array();
+    temy.forEach(tema => {
+        if(tema.conzultant_id == filter_konzultant.value) {
+            arr.push(temy.indexOf(tema));
+        } else if(filter_konzultant.value == "") {
+            arr.push(temy.indexOf(tema));
+        } 
+    });
+    return arr;
+}
+
+function filter_dostupnost_func() {
+    let arr = Array();
+    temy.forEach(tema => {
+        if(tema.dostupnost == filter_dostupnost.value) {
+            arr.push(temy.indexOf(tema));
+        } else if(filter_dostupnost.value == "") {
+            arr.push(temy.indexOf(tema));
+        } 
+    });
+    return arr;
+}
+
+function fin_arr(...arrays) {
+    if (arrays.length === 0) return [];
+    if (arrays.length === 1) return arrays[0];
+    return arrays[0].filter(item =>
+        arrays.every(array => array.includes(item))
+    )
+}
+
 function draw_table() {
     if(table.childElementCount != 0) {
         while (table.firstChild) {
             table.removeChild(table.lastChild);
         }
     }
-        
-    temy.forEach(tema => {
-        if(tema.odbor_id == filter_test.value) {
-            draw(tema);
-
-        } else if(filter_test.value == "") {
-            draw(tema);
-        } 
+    let arr_odbory = filter_odbor_func();
+    let arr_konzultanti = filter_konzultant_func();
+    let arr_dostupnost = filter_dostupnost_func();
+    console.log(arr_odbory,arr_konzultanti,arr_dostupnost)
+    fin_arr(arr_odbory,arr_konzultanti,arr_dostupnost).forEach(tema => {
+        draw(temy[tema]);
     });
-};
+}
 draw_table();

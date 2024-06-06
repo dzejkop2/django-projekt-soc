@@ -12,10 +12,20 @@
     {{ odbory|json_script:"odbory" }}
     {{ ucitelia|json_script:"ucitelia" }}
     {{ studenti|json_script:"studenti" }}
-
-    <select id="filter_test">
-        <option value="">Všetky</option>
-    </select>
+    <div id="filters">
+        <select id="filter_odbor">
+            <option value="">Všetky</option>
+        </select>
+        <select id="filter_konzultant">
+            <option value="">Všetky</option>
+        </select>
+        <select id="filter_dostupnost">
+            <option value="">Všetky</option>
+            <option value="Voľné">Voľné</option>
+            <option value="Čakajúce">Čakajúce</option>
+            <option value="Zabrané">Zabrané</option>
+        </select>
+    </div>
     <div id="items"></div>
     <script id="filter" src="{% static 'soc/filter.js' %}" type="module"></script>
 </body>
