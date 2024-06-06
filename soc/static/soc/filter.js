@@ -6,9 +6,9 @@ let filters = document.getElementById("filters")
 let filter_odbor = document.getElementById("filter_odbor")
 let filter_konzultant = document.getElementById("filter_konzultant")
 let filter_dostupnost = document.getElementById("filter_dostupnost")
+let filter_nazov = document.getElementById("filter_nazov")
 let table = document.getElementById("items")
 
-console.log(temy)
 odbory.forEach(odbor => {
     let opt = document.createElement('option');
     opt.value = odbor.id;
@@ -24,6 +24,7 @@ ucitelia.forEach(ucitel => {
 });
 
 filters.addEventListener("change", draw_table)
+filter_nazov.addEventListener("input",draw_table)
 
 function draw(tema) {
     let konzultant_meno, student_meno, odbor_nazov;
@@ -120,6 +121,18 @@ function filter_dostupnost_func() {
     return arr;
 }
 
+function filter_nazov_func() {
+    let arr = Array();
+    const filterText = filter_nazov.value.toLowerCase();
+    temy.forEach(tema => {
+        let text = tema.nazov.toLowerCase();
+        if (text.includes(filterText)) {
+            arr.push(temy.indexOf(tema))
+        }
+    });
+    return arr;
+}
+
 function fin_arr(...arrays) {
     if (arrays.length === 0) return [];
     if (arrays.length === 1) return arrays[0];
@@ -137,8 +150,8 @@ function draw_table() {
     let arr_odbory = filter_odbor_func();
     let arr_konzultanti = filter_konzultant_func();
     let arr_dostupnost = filter_dostupnost_func();
-    console.log(arr_odbory,arr_konzultanti,arr_dostupnost)
-    fin_arr(arr_odbory,arr_konzultanti,arr_dostupnost).forEach(tema => {
+    let arr_nazov = filter_nazov_func();
+    fin_arr(arr_odbory,arr_konzultanti,arr_dostupnost,arr_nazov).forEach(tema => {
         draw(temy[tema]);
     });
 }
