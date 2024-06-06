@@ -8,26 +8,40 @@
     <link rel="stylesheet" href="{% static 'soc/style.css' %}">
 </head>
 <body>
+    <header>
+        <div class="header_left">
+            <a href="{% url 'temy' %}">Stredná odborná činnosť</a>
+        </div>
+        <div class="header_right">
+
+        </div>
+    </header>
     {{ temy|json_script:"temy" }}    
     {{ odbory|json_script:"odbory" }}
     {{ ucitelia|json_script:"ucitelia" }}
     {{ studenti|json_script:"studenti" }}
-    <div id="filters">
-        <select id="filter_odbor">
-            <option value="">Všetky</option>
-        </select>
-        <select id="filter_konzultant">
-            <option value="">Všetky</option>
-        </select>
-        <select id="filter_dostupnost">
-            <option value="">Všetky</option>
-            <option value="Voľné">Voľné</option>
-            <option value="Čakajúce">Čakajúce</option>
-            <option value="Zabrané">Zabrané</option>
-        </select>
-        <input id="filter_nazov" type="text">
-    </div>
-    <div id="items"></div>
+    {{ dostupnost|json_script:"dostupnost" }}
+    <main>
+        <div class="main_wrap">
+            <div class="items" id="items">
+            </div>
+            <div id="filters" class="filters">
+                <select id="filter_odbor">
+                    <option value="">Všetko</option>
+                </select>
+                <select id="filter_konzultant">
+                    <option value="">Všetko</option>
+                </select>
+                <select id="filter_dostupnost">
+                    <option value="">Všetko</option>
+                </select>
+                <input id="filter_nazov" type="text">
+            </div>
+        </div>
+    </main>
+    <footer>
+        <p>@dzejkop</p>
+    </footer>
     <script id="filter" src="{% static 'soc/filter.js' %}" type="module"></script>
 </body>
 </html>

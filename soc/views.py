@@ -7,4 +7,5 @@ def vypis_temy(request):
     odbory = list(Odbor.objects.all().values()) 
     ucitelia = list(Ucitel.objects.all().values())
     studenti = list(Student.objects.all().values())
-    return render(request, 'soc/index.html', {"temy": temy, "odbory": odbory, "ucitelia": ucitelia, "studenti": studenti})
+    dostupnost = list(Dostupnost.objects.all().values())
+    return render(request, 'soc/index.html', {"temy": temy, "odbory": odbory, "ucitelia": ucitelia, "studenti": studenti, "dostupnost": dostupnost})

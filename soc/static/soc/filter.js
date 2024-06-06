@@ -1,13 +1,17 @@
 const temy = JSON.parse(document.getElementById('temy').textContent);
 const odbory = JSON.parse(document.getElementById('odbory').textContent);
-const ucitelia = JSON.parse(document.getElementById('ucitelia').textContent)
-const studenti = JSON.parse(document.getElementById('studenti').textContent)
+const ucitelia = JSON.parse(document.getElementById('ucitelia').textContent);
+const studenti = JSON.parse(document.getElementById('studenti').textContent);
+const dostupnost = JSON.parse(document.getElementById('dostupnost').textContent);
 let filters = document.getElementById("filters")
 let filter_odbor = document.getElementById("filter_odbor")
 let filter_konzultant = document.getElementById("filter_konzultant")
 let filter_dostupnost = document.getElementById("filter_dostupnost")
 let filter_nazov = document.getElementById("filter_nazov")
 let table = document.getElementById("items")
+
+console.log(temy)
+console.log(dostupnost)
 
 odbory.forEach(odbor => {
     let opt = document.createElement('option');
@@ -23,8 +27,16 @@ ucitelia.forEach(ucitel => {
     filter_konzultant.appendChild(opt)
 });
 
-filters.addEventListener("change", draw_table)
-filter_nazov.addEventListener("input",draw_table)
+dostupnost.forEach(dost => {
+    let opt = document.createElement('option');
+    opt.value = dost.id;
+    opt.textContent = dost.nazov;
+    filter_dostupnost.appendChild(opt)
+});
+
+filters.addEventListener("change", draw_table);
+filter_nazov.addEventListener("input",draw_table);
+
 
 function draw(tema) {
     let konzultant_meno, student_meno, odbor_nazov;
@@ -51,8 +63,7 @@ function draw(tema) {
     });
 
     let detail = document.createElement('details');
-    let summary = document.createElement('summary');
-    let left = document.createElement('p');
+    let left = document.createElement('summary');
     let right = document.createElement('p');
     let info = document.createElement('ul')
     let popis = document.createElement("li")
@@ -60,21 +71,25 @@ function draw(tema) {
     let student = document.createElement("li")
     let odbor = document.createElement("li")
     let kontroly = document.createElement("li")
-
+    let dost;
+    dostupnost.forEach(element => {
+        if(element.id == tema.dostupnost_id) {
+            dost = tema.dostupnost_id - 1;    
+        }
+    });
     left.className = "left";
     left.textContent = tema.nazov;
     right.className = "right";
-    right.textContent = tema.dostupnost;
+    right.textContent = dostupnost[dost].nazov;
     popis.textContent = `Popis: ${tema.popis}`;
     konzultant.textContent = `Konzultant: ${konzultant_meno}`;
     odbor.textContent = `Odbor: ${odbor_nazov}`;
     kontroly.textContent = `Kontroly: ${tema.kontroly} / 3`;
 
     table.appendChild(detail);
-    detail.appendChild(summary);
+    detail.appendChild(left);
+    left.appendChild(right);
     detail.appendChild(info);
-    summary.appendChild(left);
-    summary.appendChild(right);
     info.appendChild(popis);
     info.appendChild(konzultant);
     if(student_meno !== null) {
@@ -83,6 +98,7 @@ function draw(tema) {
     }
     info.appendChild(odbor);
     info.appendChild(kontroly);
+
 }
 
 function filter_odbor_func() {
@@ -154,5 +170,17 @@ function draw_table() {
     fin_arr(arr_odbory,arr_konzultanti,arr_dostupnost,arr_nazov).forEach(tema => {
         draw(temy[tema]);
     });
+    let dost = document.getElementsByClassName("right")
+    console.log(dost)
+    for (let i = 0; i < dost.length; i++) {
+        if(dost[i].textContent == "Zabrané") {
+            dost[i].style.backgroundColor = "#c42121";
+        } else if(dost[i].textContent == "Čakajúce") {
+            dost[i].style.backgroundColor = "#bf681b";
+        }
+        else if(dost[i].textContent == "Voľné") {
+            dost[i].style.backgroundColor = "#5dbf11";
+        }
+    }
 }
 draw_table();
