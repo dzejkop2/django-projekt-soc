@@ -1,8 +1,8 @@
 body {
     margin:0;
     background-color: #f0f0f0;
-    font-family: sans-serif;
     display: flex;
+    font-family: "Quicksand", sans-serif;
     flex-direction: column;
     min-height: 100vh;
 }
