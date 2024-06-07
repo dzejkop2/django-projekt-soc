@@ -29,7 +29,7 @@ a:focus::after {
 }
 
 .filters {
-    max-height: 18rem;
+    height: 18.5rem;
     background-color: #cfcfcf;
     border-radius: 15px;
     padding: 1vw;
@@ -39,7 +39,7 @@ a:focus::after {
 }
 
 .filter {
-    font-size: 16px;
+    font-size: 0.9rem;
     width: 100%;
     margin: 0.2vw 0 0.5vw 0;
     appearance: none;
@@ -54,11 +54,12 @@ a:focus::after {
 }
 
 .filters label {
+    font-size: 0.9rem;
     margin: 1vw 0 0 0.5vw;
 }
 
 .filter_nazov {
-    font-size: 16px;
+    font-size: 0.9rem;
     width: 94%;
     margin: 0.3vw 0 0.6vw 0;
     appearance: none;
