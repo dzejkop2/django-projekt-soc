@@ -1,0 +1,30 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="{% static 'soc/style.css' %}">
+    <link rel="stylesheet" href="{% static 'soc/page.css' %}">
+    <link rel="stylesheet" href="{% static 'soc/details.css' %}">
+</head>
+<body>
+    <header>
+        <div class="header_left">
+            <a href="{% url 'temy' %}" class="header_nazov">Stredná odborná činnosť</a>
+            <ul>
+                <li><a href="#" class="header_list">Štatistiky</a></li>
+              </ul> 
+        </div>
+        <div class="header_right">
+
+        </div>
+    </header>
+    {% block content %}
+    {% endblock content %}
+    <footer>
+        <p>@dzejkop</p>
+    </footer>
+</body>
+</html>
