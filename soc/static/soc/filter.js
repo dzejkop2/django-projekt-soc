@@ -16,7 +16,7 @@ console.log(dostupnost)
 odbory.forEach(odbor => {
     let opt = document.createElement('option');
     opt.value = odbor.id;
-    opt.textContent = `${odbor.cislo} - ${odbor.nazov}`;
+    opt.textContent = `${odbor.nazov}`;
     filter_odbor.appendChild(opt);
 });
 
@@ -58,7 +58,7 @@ function draw(tema) {
     });
     odbory.forEach(odbor => {
         if(odbor.id == tema.odbor_id){
-            odbor_nazov = `${odbor.cislo} - ${odbor.nazov}`
+            odbor_nazov = `${odbor.nazov}`
         } 
     });
 
@@ -182,7 +182,7 @@ function draw_table() {
         }
         else if(dost[i].textContent == "Voľné") {
             dost[i].style.backgroundColor = "#80bb33";
-            dost[i].style.color = "#c6c6c6";
+            dost[i].style.color = "white";
         }
     }
 }

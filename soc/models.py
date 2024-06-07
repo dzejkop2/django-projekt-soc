@@ -41,17 +41,14 @@ class Student(models.Model):
         ordering = ['priezvisko']
 
 class Odbor(models.Model):
-    cislo = models.IntegerField()
-    nazov = models.CharField(max_length=30)
-    popis = models.TextField(max_length=500)
+    nazov = models.CharField(max_length=80)
 
     def __str__(self):
-        return f"{self.cislo} - {self.nazov}"
+        return f"{self.nazov}"
     
     class Meta:
         verbose_name = "Odbor"
         verbose_name_plural = "Odbori"
-        ordering = ["cislo"]
 
 class Tema(models.Model):
     nazov = models.CharField(max_length=60)
@@ -68,7 +65,7 @@ class Tema(models.Model):
     class Meta:
         verbose_name = "Tema"
         verbose_name_plural = "Temy"
-        ordering = ["dostupnost"]
+        ordering = ["dostupnost_id","nazov"]
 
 
 

@@ -12,7 +12,3 @@ Endpointy- 1. témy - vsetko o nich, filtrovanie, prioritne zobraziť voľné + 
 	   3. student/{id} - info o praci ktoru ma žiak vybranu
 	   4. tema/{id} - výpis o téme
 	   5. statistic - štatisktiky - pocet tem, schvalené temy, čakajúce témy,volne temy, pocet ucitelov, studenti
-	   
-
-	   
-	

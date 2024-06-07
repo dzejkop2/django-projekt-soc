@@ -9,3 +9,11 @@ def vypis_temy(request):
     studenti = list(Student.objects.all().values())
     dostupnost = list(Dostupnost.objects.all().values())
     return render(request, 'soc/index.html', {"temy": temy, "odbory": odbory, "ucitelia": ucitelia, "studenti": studenti, "dostupnost": dostupnost})
+
+def vypis_ucitela(request):
+    ucitel = Ucitel.objects.all()
+    return render(request, 'soc/index.html', {"ucitel": ucitel})
+
+def vypis_student(request):
+    student = Student.objects.all()
+    return render(request, 'soc/index.html', {"student": student})

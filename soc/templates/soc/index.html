@@ -1,47 +1,32 @@
+{% extends "base.html" %}
 {% load static %}
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <link rel="stylesheet" href="{% static 'soc/style.css' %}">
-</head>
-<body>
-    <header>
-        <div class="header_left">
-            <a href="{% url 'temy' %}">Stredná odborná činnosť</a>
-        </div>
-        <div class="header_right">
-
-        </div>
-    </header>
-    {{ temy|json_script:"temy" }}    
-    {{ odbory|json_script:"odbory" }}
-    {{ ucitelia|json_script:"ucitelia" }}
-    {{ studenti|json_script:"studenti" }}
-    {{ dostupnost|json_script:"dostupnost" }}
+{% block content %}
     <main>
+        {{ temy|json_script:"temy" }}    
+        {{ odbory|json_script:"odbory" }}
+        {{ ucitelia|json_script:"ucitelia" }}
+        {{ studenti|json_script:"studenti" }}
+        {{ dostupnost|json_script:"dostupnost" }}
         <div class="main_wrap">
             <div class="items" id="items">
             </div>
             <div id="filters" class="filters">
-                <select id="filter_odbor">
+                <label for="filter_nazov">Názov</label>
+                <input id="filter_nazov" type="text" class="filter_nazov">
+                <label for="filter_odbor">Odbor</label>
+                <select id="filter_odbor" class="filter">
                     <option value="">Všetko</option>
                 </select>
-                <select id="filter_konzultant">
+                <label for="filter_konzultant">Konzultant</label>
+                <select id="filter_konzultant" class="filter">
                     <option value="">Všetko</option>
                 </select>
-                <select id="filter_dostupnost">
+                <label for="filter_dostupnost">Dostupnost</label>
+                <select id="filter_dostupnost" class="filter">
                     <option value="">Všetko</option>
                 </select>
-                <input id="filter_nazov" type="text">
             </div>
         </div>
     </main>
-    <footer>
-        <p>@dzejkop</p>
-    </footer>
     <script id="filter" src="{% static 'soc/filter.js' %}" type="module"></script>
-</body>
-</html>
+{% endblock content %}
