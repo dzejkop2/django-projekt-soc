@@ -27,7 +27,7 @@ details:last-child {
     margin-bottom: 0;
 }
 summary {
-    padding: 1rem;
+    padding: 0.7rem;
     display: block;
     background: #999;
     padding-left: 2.2rem;
@@ -41,7 +41,7 @@ summary:before {
     border-style: solid;
     border-color: transparent transparent transparent #fff;
     position: absolute;
-    top: 1.3rem;
+    top: 1rem;
     left: 1rem;
     transform: rotate(0);
     transform-origin: .2rem 50%;
@@ -79,20 +79,20 @@ footer{
     margin: 0;
     float:right;
     font-size: 14px;
-    padding: 0.05vw 0.5vw 0.05vw 0.5vw;
+    padding: 0.4vw 0.6vw 0.2vw 0.6vw;
     margin-right: 0.4vw;
     border-width: .4px;
-    border-radius: 6px;
-    border-style: solid;
-    border-color: #fff;
+    border-radius: 4px;
     color: black;
-    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
 .left {
     float:left;
     min-width: 95%;
     color: white;
     font-size: 16.7px;
+    display:flex;
+    align-items: center;
+    justify-content: space-between;
 }
 
 .main_wrap {
@@ -109,7 +109,6 @@ footer{
     padding: 1vw;
     margin-right: 1vw;
     min-width: 75%;
-    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-    overflow-y: scroll;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);;
 }
 

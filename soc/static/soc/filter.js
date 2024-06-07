@@ -128,7 +128,7 @@ function filter_konzultant_func() {
 function filter_dostupnost_func() {
     let arr = Array();
     temy.forEach(tema => {
-        if(tema.dostupnost == filter_dostupnost.value) {
+        if(tema.dostupnost_id == filter_dostupnost.value) {
             arr.push(temy.indexOf(tema));
         } else if(filter_dostupnost.value == "") {
             arr.push(temy.indexOf(tema));
@@ -175,11 +175,14 @@ function draw_table() {
     for (let i = 0; i < dost.length; i++) {
         if(dost[i].textContent == "Zabrané") {
             dost[i].style.backgroundColor = "#c42121";
+            dost[i].style.color = "#cfcfcf";
         } else if(dost[i].textContent == "Čakajúce") {
             dost[i].style.backgroundColor = "#bf681b";
+            dost[i].style.color = "#cfcfcf";
         }
         else if(dost[i].textContent == "Voľné") {
-            dost[i].style.backgroundColor = "#5dbf11";
+            dost[i].style.backgroundColor = "#80bb33";
+            dost[i].style.color = "#c6c6c6";
         }
     }
 }
