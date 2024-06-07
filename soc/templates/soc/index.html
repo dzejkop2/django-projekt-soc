@@ -1,32 +1,79 @@
 {% extends "base.html" %}
 {% load static %}
+{%block nazov_stranka%}
+    <title>Témy | SOČ</title>
+{%endblock nazov_stranka%}
+{% block style%}
+    <link rel="stylesheet" href="{% static 'soc/css/index.css' %}">
+{% endblock style%}
 {% block content %}
     <main>
-        {{ temy|json_script:"temy" }}    
-        {{ odbory|json_script:"odbory" }}
-        {{ ucitelia|json_script:"ucitelia" }}
-        {{ studenti|json_script:"studenti" }}
-        {{ dostupnost|json_script:"dostupnost" }}
         <div class="main_wrap">
-            <div class="items" id="items">
+            <div class="items">
+                {% for tema in temy%}
+                    <details id="item">
+                        <summary class="left">
+                            <p class="nazov" id="nazov">{{ tema.nazov }}</p>
+                            <p class="right" id="dostupnost" data-id="{{tema.dostupnost.id}}">{{ tema.dostupnost }}</p>
+                        </summary>
+                        <div class="detail_info">
+                            <p class="nadpis_detail"><strong>Popis: </strong></p>
+                            <p class="popis">{{ tema.popis }}</p>
+                            <p class="nadpis_detail"><strong>Konzultant: </strong></p>
+                            <p class="popis" id="konzultant" data-id="{{tema.conzultant.id}}">{{ tema.conzultant }}</p>
+                            <p class="nadpis_detail"><strong>Student: </strong></p>
+                            {% if tema.student != null%}
+                                <p class="popis" id="student" data-id="{{tema.student.id}}">{{ tema.student }} - {{tema.student.trieda}}</p>
+                            {% else %}
+                                <p class="popis">-------</p>
+                            {% endif %}
+                            <p class="nadpis_detail"><strong>Odbor: </strong></p>
+                            <p class="popis" id="odbor" data-id="{{tema.odbor.id}}">{{ tema.odbor }}</p>
+                            <p class="nadpis_detail"><strong>Kontroly: </strong></p>
+                            <p class="popis">{{ tema.kontroly }}</p>
+                        <div>
+                    </details>
+                    
+                {% endfor %}
             </div>
             <div id="filters" class="filters">
-                <label for="filter_nazov">Názov</label>
-                <input id="filter_nazov" type="text" class="filter_nazov">
-                <label for="filter_odbor">Odbor</label>
-                <select id="filter_odbor" class="filter">
-                    <option value="">Všetko</option>
-                </select>
-                <label for="filter_konzultant">Konzultant</label>
-                <select id="filter_konzultant" class="filter">
-                    <option value="">Všetko</option>
-                </select>
-                <label for="filter_dostupnost">Dostupnost</label>
-                <select id="filter_dostupnost" class="filter">
-                    <option value="">Všetko</option>
-                </select>
+                <div class="filters_inner">
+                    <div class="item">
+                        <label for="filter_nazov">Názov</label>
+                        <input id="filter_nazov" type="text" class="filter_nazov">
+                    </div>
+                    <div class="item">
+                        <label for="filter_odbor">Odbor</label>
+                        <select id="filter_odbor" class="filter">
+                            <option value="">Všetko</option>
+                            {% for odbor in odbory%}
+                            <option value="{{odbor.id}}">{{odbor.nazov}}</option>
+                            {% endfor %}
+                        </select>
+                    </div>
+                    <div class="item">
+                        <label for="filter_konzultant">Konzultant</label>
+                        <select id="filter_konzultant" class="filter">
+                            <option value="">Všetko</option>
+                            {% for konzultant in ucitelia%}
+                            <option value="{{konzultant.id}}">{{konzultant.meno}} {{konzultant.priezvisko}}</option>
+                            {% endfor %}
+                        </select>
+                    </div>
+                    <div class="item">
+                        <label for="filter_dostupnost">Dostupnost</label>
+                        <select id="filter_dostupnost" class="filter">
+                            <option value="">Všetko</option>
+                            {% for dost in dostupnost%}
+                            <option value="{{dost.id}}">{{dost.nazov}}</option>
+                            {% endfor %}
+                        </select>
+                    </div>
+                </div>
             </div>
         </div>
     </main>
-    <script id="filter" src="{% static 'soc/filter.js' %}" type="module"></script>
+    <script id="filter" src="{% static 'soc/js/filter.js' %}" type="module"></script>
 {% endblock content %}
+
+

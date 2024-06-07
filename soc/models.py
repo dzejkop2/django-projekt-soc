@@ -51,7 +51,7 @@ class Odbor(models.Model):
         verbose_name_plural = "Odbori"
 
 class Tema(models.Model):
-    nazov = models.CharField(max_length=60)
+    nazov = models.CharField(max_length=100)
     popis = models.TextField(max_length=500)
     conzultant = models.ForeignKey(Ucitel, on_delete=models.CASCADE,default=1)
     student = models.ForeignKey(Student, on_delete=models.SET_NULL, null=True, blank=True)

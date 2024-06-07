@@ -1,0 +1,121 @@
+form {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.main_wrap {
+    margin-top: 2rem;
+    height: fit-content;
+    background-color: #cfcfcf;
+    border-radius: 15px;
+    padding: 2vw 2.5vw 2vw 2.5vw;
+    width: 55%;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    margin-bottom: 2rem;
+}
+.main_wrap h1{
+    text-align: center;
+    margin: 0;
+}
+
+.text_input {
+    font-size: 0.9rem;
+    width: 99%;
+    background-color: #cfcfcf;
+    border-style: none none solid;
+    border-width: 0.2rem;
+    border-color: #b6b6b6;
+    color: #000;
+    margin: 0.3em 0.3em 0.3em 0.3em;
+    padding: 0;
+}
+
+.text_input:focus {
+    outline: none;
+    margin: 0;
+    padding: 0.3em 0.3em 0.3em 0.3em;
+    border-color: #77ad2e;
+    transition: border-color 300ms, transform 300ms, margin 300ms, padding 300ms;
+}
+.area_input {
+    font-size: 0.9rem;
+    width: 99%;
+    background-color: #cfcfcf;
+    border-style: solid;
+    border-width: 0.2rem;
+    border-color: #b6b6b6;
+    color: #000;
+    margin: 0.3em 0.3em 0.3em 0.3em;
+    padding: 0;
+    resize: none;
+}
+.area_input:focus {
+    outline: none;
+    margin: 0;
+    padding: 0.3em 0.3em 0.3em 0.3em;
+    border-color: #77ad2e;
+    transition: border-color 300ms, transform 300ms, margin 300ms, padding 300ms;
+}
+.part {
+    width: 100%;
+    margin-top: 1vw;
+}
+.part label {
+    display: block;
+    margin-bottom: 0.5em;
+}
+.dropdown {
+    font-size: 1rem;
+    width: 100%;
+    margin: 0.2vw 0 0.5vw 0;
+    background-color: #cfcfcf;
+    border-style: none none solid;
+    border-width: 0.2rem;
+    border-color: #b6b6b6;
+    color: #000;
+    cursor: pointer;
+    padding: 0.3em 0.3em 0.3em 0.3em;
+}
+
+.dropdown:focus {
+    outline: none;
+    border-color: #77ad2e;
+    transition: border-color 300ms, transform 300ms;
+}
+
+.part_button {
+    width: 100%;
+    margin-top: 1vw;
+    display: flex;
+    justify-content: center;
+}
+
+.button {
+  appearance: none;
+  background-color: #77ad2e;
+  border: 2px solid #77ad2e;
+  border-radius: 10px;
+  box-sizing: border-box;
+  color: #FFFFFF;
+  cursor: pointer;
+  display: inline-block;
+  font-size: 16px;
+  font-weight: 600;
+  padding: 16px 24px;
+  text-align: center;
+  transition: all 300ms cubic-bezier(.23, 1, 0.32, 1);
+  user-select: none;
+  -webkit-user-select: none;
+  width: 20rem;
+}
+
+.button:hover {
+  box-shadow: rgba(0, 0, 0, 0.25) 0 8px 15px;
+  transform: translateY(-2px);
+}
+
+.button:active {
+  box-shadow: none;
+  transform: translateY(0);
+}

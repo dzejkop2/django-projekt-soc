@@ -4,24 +4,27 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    {%block nazov_stranka%}
+    {%endblock nazov_stranka%}
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@300..700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="{% static 'soc/style.css' %}">
-    <link rel="stylesheet" href="{% static 'soc/page.css' %}">
-    <link rel="stylesheet" href="{% static 'soc/details.css' %}">
+    {%block style%}
+    {%endblock style%}
+    <link rel="stylesheet" href="{% static 'soc/css/page.css' %}">
 </head>
 <body>
     <header>
         <div class="header_left">
             <a href="{% url 'temy' %}" class="header_nazov">Stredná odborná činnosť</a>
             <ul>
-                <li><a href="#" class="header_list">Štatistiky</a></li>
-              </ul> 
+                <li><a href="{% url "statistiky" %}" class="header_list">Štatistiky</a></li>
+            </ul> 
         </div>
         <div class="header_right">
-
+            <ul>
+                <li><a href="{% url "pridanie" %}" class="header_list">Pridať tému</a></li>
+            </ul> 
         </div>
     </header>
     {% block content %}

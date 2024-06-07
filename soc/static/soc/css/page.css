@@ -10,6 +10,7 @@ header {
     background-color: #77ad2e;
     min-height: 3vw;
     display: flex;
+    justify-content: space-between;
 }
 
 header ul {
@@ -46,14 +47,44 @@ footer{
     align-items: center;
 }
 
+.header_right {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-right: 1vw;
+}
+
 .header_nazov {
     font-size: 22px;
     margin: 0 1vw 0 1vw;
 }
 
-.main_wrap {
-    min-height: 38vw;
-    margin: 2vw 0 2vw 0;
-    display: flex;
-    width: 75%;
+a {
+    padding: 0.7vw;
+    text-decoration: none;
+    color: white;
+}
+a {
+    display: block;
+    position: relative;
+    padding: 0.2em 0;
+}
+a::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 0.1em;
+    background-color: white;
+    opacity: 0;
+    transition: opacity 300ms, transform 300ms;
+    opacity: 1;
+    transform: scale(0);
+    transform-origin: center;
+}
+
+a:hover::after,
+a:focus::after {
+    transform: scale(1);
 }
