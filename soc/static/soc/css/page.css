@@ -59,17 +59,17 @@ footer{
     margin: 0 1vw 0 1vw;
 }
 
-a {
+.special_a {
     padding: 0.7vw;
     text-decoration: none;
     color: white;
 }
-a {
+.special_a {
     display: block;
     position: relative;
     padding: 0.2em 0;
 }
-a::after {
+.special_a::after {
     content: '';
     position: absolute;
     bottom: 0;
@@ -84,7 +84,7 @@ a::after {
     transform-origin: center;
 }
 
-a:hover::after,
-a:focus::after {
+.special_a:hover::after,
+.special_a:focus::after {
     transform: scale(1);
 }

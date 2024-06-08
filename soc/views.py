@@ -18,6 +18,28 @@ def vypis_student(request):
     student = Student.objects.all()
     return render(request, 'soc/index.html', {"student": student})
 
+def tema_detail(request,tema_id):
+    succ_message = ""
+    err_message = ""
+    if request.method == "POST":
+        temy = Tema.objects.all()
+        tema = Tema.objects.get(pk=tema_id)
+        has_tema = False
+        student = Student.objects.get(pk=request.POST["student"])
+        for tem in temy:
+            if(tem.student_id == student.id):
+                has_tema = True
+        if(has_tema == True):
+            err_message = "Študent už má tému!"
+        else:
+            tema.student = student
+            tema.dostupnost = Dostupnost.objects.get(nazov="Čakajúce")
+            tema.save()
+            succ_message = "Podarilo sa ti prihlasiť!"
+    tema = Tema.objects.get(pk=tema_id)
+    studenti = Student.objects.all()
+    return render(request, 'soc/tema.html', {"tema": tema,"studenti": studenti,"err_message":err_message,"succ_message":succ_message})
+
 def statistiky(request):
     temy = Tema.objects.all()
     return render(request, 'soc/statistiky.html', {"temy": temy})
@@ -29,11 +51,6 @@ def add_tema(request):
         odbor = Odbor.objects.get(pk=request.POST["odbor"])
         nazov = request.POST["nazov"]
         popis = request.POST["popis_temy"]
-        
-
-        if not nazov or not popis:
-            return HttpResponseBadRequest("Title and Description are required fields.")
-
         if request.POST["student"] == "":
             dostupnost = Dostupnost.objects.get(nazov="Voľné")
             tema = Tema(
@@ -61,7 +78,6 @@ def add_tema(request):
         tema.save()
         message = "Podarilo sa vytvoriť novú tému!"
         
-
     odbory = Odbor.objects.all()
     ucitelia = Ucitel.objects.all()
     studenti = Student.objects.all()

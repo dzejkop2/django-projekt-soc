@@ -10,7 +10,9 @@
     <main>
         <div class="main_wrap">
             {% if message != "" %}
-            <h1>{{message}}</h1>
+            <div class="message_wrap">
+                <p>{{message}}</p>
+            </div>
             {% endif %}
             <h1>Nová Téma</h1>
             <form method="post">

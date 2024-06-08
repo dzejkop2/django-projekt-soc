@@ -30,8 +30,11 @@
                             <p class="nadpis_detail"><strong>Odbor: </strong></p>
                             <p class="popis" id="odbor" data-id="{{tema.odbor.id}}">{{ tema.odbor }}</p>
                             <p class="nadpis_detail"><strong>Kontroly: </strong></p>
-                            <p class="popis">{{ tema.kontroly }}</p>
-                        <div>
+                            <p class="popis" id="kontroly" data-id="{{tema.kontroly}}"></p>
+                            <div class="part_button">
+                                <a href="{% url 'tema' tema_id=tema.id%}"><input type="button" id="button" value="" class="button"></a>
+                            </div>
+                        </div>
                     </details>
                     
                 {% endfor %}
@@ -74,6 +77,8 @@
         </div>
     </main>
     <script id="filter" src="{% static 'soc/js/filter.js' %}" type="module"></script>
+    <script id="filter" src="{% static 'soc/js/farbicka.js' %}" type="module"></script>
+    <script id="filter" src="{% static 'soc/js/kontroly.js' %}" type="module"></script>
 {% endblock content %}
 
 

@@ -6,4 +6,5 @@ urlpatterns = [
     path('', views.vypis_temy, name="temy"),
     path('statistky/', views.statistiky, name="statistiky"),
     path('pridanie/', views.add_tema, name="pridanie"),
+    path('tema/<tema_id>',views.tema_detail, name="tema"),
 ]

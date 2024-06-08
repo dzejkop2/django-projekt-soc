@@ -13,6 +13,7 @@ form {
     width: 55%;
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
     margin-bottom: 2rem;
+    overflow-wrap: break-word;
 }
 .main_wrap h1{
     text-align: center;
@@ -133,6 +134,50 @@ form {
     width: 40%;
     border: 2px solid #70a728;
     background: rgba(112, 170, 35, 40%);
+    border-radius: 10px;
+    padding: 1rem 3rem 1rem 3rem;
+    
+}
+
+.popis {
+    margin: 0.5rem 0 1rem 0;
+}
+
+.nadpis_detail {
+    margin-bottom: 0;
+}
+
+.message_wrap {
+    display: flex;
+    width: 100%;
+    align-items: center;
+    justify-content: center;
+}
+
+.message_wrap p {
+    font-size: 20px;
+    text-align: center;
+    width: 40%;
+    border: 2px solid #70a728;
+    background: rgba(112, 170, 35, 40%);
+    border-radius: 10px;
+    padding: 1rem 3rem 1rem 3rem;
+    
+}
+
+.err_message_wrap {
+    display: flex;
+    width: 100%;
+    align-items: center;
+    justify-content: center;
+}
+
+.err_message_wrap p {
+    font-size: 20px;
+    text-align: center;
+    width: 40%;
+    border: 2px solid #a72828;
+    background: rgba(170, 35, 35, 0.4);
     border-radius: 10px;
     padding: 1rem 3rem 1rem 3rem;
     

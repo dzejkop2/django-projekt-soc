@@ -7,21 +7,15 @@ const items = document.querySelectorAll("#item")
 
 console.log(items)
 
-function farby() {
-    let dost = document.getElementsByClassName("right")
-    for (let i = 0; i < dost.length; i++) {
-        if(dost[i].textContent == "Zabrané") {
-            dost[i].style.backgroundColor = "#c42121";
-            dost[i].style.color = "#cfcfcf";
-        } else if(dost[i].textContent == "Čakajúce") {
-            dost[i].style.backgroundColor = "#bf681b";
-            dost[i].style.color = "#cfcfcf";
+function items_button() {
+    items.forEach(item => {
+        let button = item.querySelector("#button");
+        if(item.querySelector('#dostupnost').innerHTML != "Voľné"){
+            button.value = "Informácie";
+        } else {
+            button.value = "Prihlásiť sa";
         }
-        else if(dost[i].textContent == "Voľné") {
-            dost[i].style.backgroundColor = "#80bb33";
-            dost[i].style.color = "white";
-        }
-    }
+    });
 }
 
 function filter() {
@@ -48,4 +42,4 @@ function filter() {
 filters.addEventListener("change",filter)
 filter_nazov.addEventListener("input",filter)
 
-farby();
+items_button();

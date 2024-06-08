@@ -1,0 +1,56 @@
+{% extends "base.html" %}
+{% load static %}
+{%block nazov_stranka%}
+    <title>{{tema.nazov}} | SOČ</title>
+{%endblock nazov_stranka%}
+{% block style%}
+    <link rel="stylesheet" href="{% static 'soc/css/info_tema.css' %}">
+{% endblock style%}
+{% block content %}
+<main>
+    <div class="main_wrap">
+        {% if succ_message != "" %}
+            <div class="message_wrap">
+                <p>{{succ_message}}</p>
+            </div>
+        {% endif %}
+        {% if err_message != "" %}
+            <div class="err_message_wrap">
+                <p>{{err_message}}</p>
+            </div>
+        {% endif %}
+        {% if tema.student == null%}
+        <form method="post">
+            {% csrf_token %}
+            {% endif %}
+            <h1>{{tema.nazov}}</h1>
+            <p class="nadpis_detail"><strong>Popis: </strong></p>
+            <p class="popis">{{ tema.popis }}</p>
+            <p class="nadpis_detail"><strong>Konzultant: </strong></p>
+            <p class="popis" id="konzultant" data-id="{{tema.conzultant.id}}">{{ tema.conzultant }}</p>
+            <p class="nadpis_detail"><strong>Student: </strong></p>
+            {% if tema.student != null%}
+                <p class="popis" id="student" data-id="{{tema.student.id}}">{{ tema.student }} - {{tema.student.trieda}}</p>
+            {% else %}
+                <select id="student" name="student" class="dropdown">
+                    {% for student in studenti%}
+                    <option value="{{student.id}}">{{student.meno}} {{student.priezvisko}} - {{student.trieda}}</option>
+                    {% endfor %}
+                </select>
+            {% endif %}
+            <p class="nadpis_detail"><strong>Odbor: </strong></p>
+            <p class="popis" id="odbor" data-id="{{tema.odbor.id}}">{{ tema.odbor }}</p>
+            <p class="nadpis_detail"><strong>Kontroly: </strong></p>
+            <p class="popis" id="kontroly" data-id="{{tema.kontroly}}"></p>
+            {% if tema.student == null%}
+            <input type="hidden" id="tema_id" value="{{tema.id}}">
+            <div class="part_button">
+                <input type="submit" value="Prihlásiť sa" class="button">
+            </div>
+        </form>
+        {% endif %}
+    </div>
+    <script id="filter" src="{% static 'soc/js/kontroly.js' %}" type="module"></script>
+    <script id="filter" src="{% static 'soc/js/farbicka.js' %}" type="module"></script>
+</main>
+{% endblock content %}
