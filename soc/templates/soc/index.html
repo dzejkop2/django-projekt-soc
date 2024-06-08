@@ -20,7 +20,7 @@
                             <p class="nadpis_detail"><strong>Popis: </strong></p>
                             <p class="popis">{{ tema.popis }}</p>
                             <p class="nadpis_detail"><strong>Konzultant: </strong></p>
-                            <p class="popis" id="konzultant" data-id="{{tema.conzultant.id}}">{{ tema.conzultant }}</p>
+                            <a href="{% url 'ucitel' ucitel_id=tema.conzultant.id %}" class="popis_a special_a" id="konzultant" data-id="{{tema.conzultant.id}}">{{ tema.conzultant }}</a>
                             <p class="nadpis_detail"><strong>Student: </strong></p>
                             {% if tema.student != null%}
                                 <p class="popis" id="student" data-id="{{tema.student.id}}">{{ tema.student }} - {{tema.student.trieda}}</p>
@@ -77,8 +77,8 @@
         </div>
     </main>
     <script id="filter" src="{% static 'soc/js/filter.js' %}" type="module"></script>
-    <script id="filter" src="{% static 'soc/js/farbicka.js' %}" type="module"></script>
-    <script id="filter" src="{% static 'soc/js/kontroly.js' %}" type="module"></script>
+    <script id="farbicka" src="{% static 'soc/js/farbicka.js' %}" type="module"></script>
+    <script id="kontroly" src="{% static 'soc/js/kontroly.js' %}" type="module"></script>
 {% endblock content %}
 
 

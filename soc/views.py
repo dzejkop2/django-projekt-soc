@@ -10,13 +10,33 @@ def vypis_temy(request):
     dostupnost = Dostupnost.objects.all()
     return render(request, 'soc/index.html', {"temy": temy, "odbory": odbory, "ucitelia": ucitelia, "studenti": studenti, "dostupnost": dostupnost})
 
-def vypis_ucitela(request):
-    ucitel = Ucitel.objects.all()
-    return render(request, 'soc/index.html', {"ucitel": ucitel})
+def vypis_ucitela(request,ucitel_id):
+    succ_message = ""
+    if request.method == "POST":
+        tema = Tema.objects.get(pk=request.POST["tema_id"])
+        if(request.POST.get("prijat",None) != None):
+            dostupnost = Dostupnost.objects.get(nazov="Zabrané")
+            tema.dostupnost = dostupnost
+            tema.save()
+            succ_message = "Podarilo sa prijať študenta!"
+        elif(request.POST.get("zamietnut",None) != None):
+            dostupnost = Dostupnost.objects.get(nazov="Voľné")
+            tema.student = None
+            tema.dostupnost = dostupnost
+            tema.save()
+            succ_message = "Podarilo sa zamietnuť študenta!"
+        elif(request.POST.get("update",None) != None):
+            tema.kontroly = request.POST["kontroly"]
+            tema.save()
+            succ_message = "Podarilo sa aktualizovať tému!"
+
+    ucitel = Ucitel.objects.get(pk=ucitel_id)
+    temy = Tema.objects.filter(conzultant=ucitel).order_by("-dostupnost")
+    return render(request, 'soc/ucitel.html', {"ucitel": ucitel,"temy": temy,"succ_message":succ_message})
 
 def vypis_student(request):
     student = Student.objects.all()
-    return render(request, 'soc/index.html', {"student": student})
+    return render(request, 'soc/student.html', {"student": student})
 
 def tema_detail(request,tema_id):
     succ_message = ""

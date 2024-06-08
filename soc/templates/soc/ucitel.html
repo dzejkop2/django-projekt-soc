@@ -1,0 +1,77 @@
+{% extends "base.html" %}
+{% load static %}
+{%block nazov_stranka%}
+    <title>{{ucitel.meno}} {{ucitel.priezvisko}} | SOČ</title>
+{%endblock nazov_stranka%}
+{% block style%}
+    <link rel="stylesheet" href="{% static 'soc/css/ucitel.css' %}">
+{% endblock style%}
+{% block content %}
+<main>
+    <div class="main_wrap">
+        {% if succ_message != "" %}
+            <div class="message_wrap">
+                <p>{{succ_message}}</p>
+            </div>
+        {% endif %}
+        <h1>{{ucitel.meno}} {{ucitel.priezvisko}}</h1>
+        {% for tema in temy%}
+            <details id="item">
+                <summary class="left">
+                    <p class="nazov" id="nazov">{{ tema.nazov }}</p>
+                    <p class="right" id="dostupnost" data-id="{{tema.dostupnost.id}}">{{ tema.dostupnost }}</p>
+                </summary>
+                <div class="detail_info">
+                    <p class="nadpis_detail"><strong>Popis: </strong></p>
+                    <p class="popis">{{ tema.popis }}</p>
+                    <p class="nadpis_detail"><strong>Student: </strong></p>
+                    {% if tema.student != null%}
+                        <p class="popis" id="student" data-id="{{tema.student.id}}">{{ tema.student }} - {{tema.student.trieda}}</p>
+                    {% else %}
+                        <p class="popis">-------</p>
+                    {% endif %}
+                    <p class="nadpis_detail"><strong>Odbor: </strong></p>
+                    <p class="popis" id="odbor" data-id="{{tema.odbor.id}}">{{ tema.odbor }}</p>
+                    <p class="nadpis_detail"><strong>Kontroly: </strong></p>
+                    <div class="wrap_buttons">
+                    <p class="popis" id="kontroly" data-id="{{tema.kontroly}}"></p>
+                    {%if tema.dostupnost.id == 2%}
+                        <div id="buttons">
+                            <button name="+" id="plus" class="small_button">+</button>
+                            <button name="-" id="minus" class="small_button">-</button>
+                        </div>
+                    {% endif %}
+                    </div>
+                    {%if tema.dostupnost.id == 3%}
+                        <form method="post">
+                            {% csrf_token %}
+                            <input type="hidden" name="tema_id" value="{{tema.id}}">
+                            <div class="wrap_buttons">
+                                <div class="part_button">
+                                    <input type="submit" name="prijat" id="prijat" value="Prijať" class="button">
+                                </div>
+                                <div class="part_button">
+                                    <input type="submit" name="zamietnut" id="zamietnut" value="Zamietnuť" class="button">
+                                </div>
+                            </div>
+                        </form>
+                    {% endif %}
+                    {%if tema.dostupnost.id == 2%}
+                        <form method="post">
+                        {% csrf_token %}
+                            <input type="hidden" name="kontroly" id="kontroly_input" value="">
+                            <input type="hidden" name="tema_id" value="{{tema.id}}">
+                            <div class="part_button_full">
+                                <input type="submit" name="update" id="update" value="Aktualizovať" class="button">
+                            </div>
+                        </form>
+                    {% endif %}
+                </div>
+            </details>
+        {% endfor %}
+    </div>
+    <script id="ucitel" src="{% static 'soc/js/ucitel.js' %}" type="module"></script>
+    <script id="kontroly" src="{% static 'soc/js/kontroly.js' %}" type="module"></script>
+    <script id="farbicka" src="{% static 'soc/js/farbicka.js' %}" type="module"></script>
+</main>
+{% endblock content %}

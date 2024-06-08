@@ -2,6 +2,7 @@ function kontroly_dots() {
     const kontroly = document.querySelectorAll("#kontroly");
     kontroly.forEach(kontrola => {
         kontrola.style.fontSize = "24px";
+        kontrola.textContent = "";
         for (let i = 0; i < 3; i++) {
             if(i < kontrola.dataset.id) {
                 kontrola.textContent += "☑";
@@ -13,3 +14,4 @@ function kontroly_dots() {
 }
 
 kontroly_dots();
+export {kontroly_dots}
