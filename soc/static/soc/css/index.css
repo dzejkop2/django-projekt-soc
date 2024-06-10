@@ -149,12 +149,6 @@ details summary::-webkit-details-marker {
     overflow-wrap: break-word;
 }
 
-.popis_a {
-    margin: 0.5vw 0 0.5vw 1vw;
-    overflow-wrap: break-word;
-    width: fit-content;
-}
-
 
 .nazov {
     padding: 0;

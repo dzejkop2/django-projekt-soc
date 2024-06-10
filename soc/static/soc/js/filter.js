@@ -7,17 +7,6 @@ const items = document.querySelectorAll("#item")
 
 console.log(items)
 
-function items_button() {
-    items.forEach(item => {
-        let button = item.querySelector("#button");
-        if(item.querySelector('#dostupnost').innerHTML != "Voľné"){
-            button.value = "Informácie";
-        } else {
-            button.value = "Prihlásiť sa";
-        }
-    });
-}
-
 function filter() {
     const odbor = filter_odbor.value;
     const konzultant = filter_konzultant.value;
@@ -41,5 +30,3 @@ function filter() {
 
 filters.addEventListener("change",filter)
 filter_nazov.addEventListener("input",filter)
-
-items_button();

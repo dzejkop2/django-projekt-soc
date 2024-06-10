@@ -27,10 +27,10 @@
             <p class="nadpis_detail"><strong>Popis: </strong></p>
             <p class="popis">{{ tema.popis }}</p>
             <p class="nadpis_detail"><strong>Konzultant: </strong></p>
-            <p class="popis" id="konzultant" data-id="{{tema.conzultant.id}}">{{ tema.conzultant }}</p>
+            <a href="{% url 'ucitel' ucitel_id=tema.conzultant.id %}" class="popis_a_tema special_black" id="konzultant" data-id="{{tema.conzultant.id}}">{{ tema.conzultant }}</a>
             <p class="nadpis_detail"><strong>Student: </strong></p>
             {% if tema.student != null%}
-                <p class="popis" id="student" data-id="{{tema.student.id}}">{{ tema.student }} - {{tema.student.trieda}}</p>
+                <a href="{% url 'student' student_id=tema.student.id %}" class="popis_a special_black" id="student" data-id="{{tema.student.id}}">{{ tema.student }} - {{tema.student.trieda}}</a>
             {% else %}
                 <select id="student" name="student" class="dropdown">
                     {% for student in studenti%}

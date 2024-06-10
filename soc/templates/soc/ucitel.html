@@ -15,6 +15,9 @@
             </div>
         {% endif %}
         <h1>{{ucitel.meno}} {{ucitel.priezvisko}}</h1>
+        {% if not temy%}
+        <h1>Ucitel nema ziadne temy</h1>
+        {% endif %}
         {% for tema in temy%}
             <details id="item">
                 <summary class="left">
@@ -26,7 +29,7 @@
                     <p class="popis">{{ tema.popis }}</p>
                     <p class="nadpis_detail"><strong>Student: </strong></p>
                     {% if tema.student != null%}
-                        <p class="popis" id="student" data-id="{{tema.student.id}}">{{ tema.student }} - {{tema.student.trieda}}</p>
+                        <a href="{% url 'student' student_id=tema.student.id %}" class="popis_a special_a" id="student" data-id="{{tema.student.id}}">{{ tema.student }} - {{tema.student.trieda}}</a>
                     {% else %}
                         <p class="popis">-------</p>
                     {% endif %}
