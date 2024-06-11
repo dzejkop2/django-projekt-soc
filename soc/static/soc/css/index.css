@@ -74,7 +74,7 @@ details summary::-webkit-details-marker {
     border-radius: 15px;
     padding: 1vw;
     margin-right: 1vw;
-    min-width: 75%;
+    width: 75%;
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
 
@@ -148,7 +148,7 @@ details summary::-webkit-details-marker {
 .popis {
     margin: 0.5vw 0 0.5vw 1vw;
     overflow-wrap: break-word;
-    max-width: 100%;
+    max-width: 90%;
 }
 
 

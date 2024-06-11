@@ -9,6 +9,6 @@ modely- 1. téma (projektu na SOČ): Názov (povinny),Popis (povinny),Konzultant
 
 Endpointy- 1. témy - vsetko o nich, filtrovanie, prioritne zobraziť voľné + podľa abecedy (done)
 	   2. ucitel/{id} - všetky temy čo ma konzultant (done)
-	   3. student/{id} - info o praci ktoru ma žiak vybranu 
+	   3. student/{id} - info o praci ktoru ma žiak vybranu (done)
 	   4. tema/{id} - výpis o téme (done)
-	   5. statistic - štatisktiky - pocet tem, schvalené temy, čakajúce témy,volne temy, pocet ucitelov, studenti
+	   5. statistic - štatisktiky - pocet tem, schvalené temy, čakajúce témy,volne temy, pocet ucitelov, studenti (WIP)

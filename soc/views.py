@@ -1,5 +1,6 @@
 from django.shortcuts import render
 from django.http import JsonResponse,HttpResponse,HttpResponseBadRequest
+from django.db.models import Count
 from . models import *
 
 def vypis_temy(request):
@@ -54,8 +55,19 @@ def tema_detail(request,tema_id):
     return render(request, 'soc/tema.html', {"tema": tema,"studenti": studenti,"err_message":err_message,"succ_message":succ_message})
 
 def statistiky(request):
-    temy = Tema.objects.all()
-    return render(request, 'soc/statistiky.html', {"temy": temy})
+    temy = Tema.objects.all().count()
+    zabrane = Tema.objects.filter(dostupnost=Dostupnost.objects.get(nazov="Zabrané")).count()
+    volne = Tema.objects.filter(dostupnost=Dostupnost.objects.get(nazov="Voľné")).count()
+    cakajuce = Tema.objects.filter(dostupnost=Dostupnost.objects.get(nazov="Čakajúce")).count()
+    ucitelia = Ucitel.objects.all().count()
+    ziaci = Student.objects.all().count()
+    studenti_s_temamy = Student.objects.annotate(temy=Count('tema'))
+    count_studenti = studenti_s_temamy.filter(temy__gt=0).count()
+    count_studenti_bez = studenti_s_temamy.filter(temy=0).count()
+    ucitelia_s_temamy = Ucitel.objects.annotate(temy=Count('tema'))
+    count_ucitelia = ucitelia_s_temamy.filter(temy__gt=0).count()
+    count_ucitelia_bez = ucitelia_s_temamy.filter(temy=0).count()
+    return render(request, 'soc/statistiky.html', {"temy": temy, "zabrane":zabrane,"cakajuce":cakajuce,"volne":volne,"ziaci":ziaci,"ucitelia":ucitelia,"studenti_s_temamy":count_studenti,"ucitelia_s_temamy":count_ucitelia,"ucitelia_bez_temy":count_ucitelia_bez,"studenti_bez_temy":count_studenti_bez})
 
 def add_tema(request):
     message = ""
