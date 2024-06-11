@@ -26,6 +26,7 @@ summary {
     position: relative;
     cursor: pointer;
     user-select: none;
+    max-width: 95%;
 }
 summary:before {
     content: '';
@@ -197,7 +198,7 @@ details summary::-webkit-details-marker {
 .detail_info {
     margin-left: 1.5vw;
     padding: 0.5vw;
-    width: 63rem;
+    width: 95%;
 }
 
 .popis {
@@ -215,6 +216,8 @@ details summary::-webkit-details-marker {
 .nazov {
     padding: 0;
     margin: 0;
+    max-width: 80%;
+    overflow-wrap: break-word;
 }
 
 .nadpis_detail {

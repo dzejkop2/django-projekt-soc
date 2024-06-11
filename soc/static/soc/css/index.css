@@ -21,6 +21,7 @@ summary {
     position: relative;
     cursor: pointer;
     user-select: none;
+    max-width: 95%;
 }
 summary:before {
     content: '';
@@ -141,18 +142,21 @@ details summary::-webkit-details-marker {
 .detail_info {
     margin-left: 1.5vw;
     padding: 0.5vw;
-    width: 63rem;
+    width: 95%;
 }
 
 .popis {
     margin: 0.5vw 0 0.5vw 1vw;
     overflow-wrap: break-word;
+    max-width: 100%;
 }
 
 
 .nazov {
     padding: 0;
     margin: 0;
+    width: 80%;
+    overflow-wrap: break-word;
 }
 
 .nadpis_detail {
