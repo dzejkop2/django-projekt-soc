@@ -25,7 +25,6 @@ function filter() {
             item.style.display = "none";
         }
     })
-    farby();
 };
 
 filters.addEventListener("change",filter)

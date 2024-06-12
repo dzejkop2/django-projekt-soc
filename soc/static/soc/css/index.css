@@ -21,7 +21,6 @@ summary {
     position: relative;
     cursor: pointer;
     user-select: none;
-    max-width: 95%;
 }
 summary:before {
     content: '';
@@ -46,7 +45,7 @@ details summary::-webkit-details-marker {
     min-height: 38vw;
     margin: 2vw 0 2vw 0;
     display: flex;
-    width: 75%;
+    width: 85%;
 }
 .right {
     margin: 0;
@@ -60,7 +59,7 @@ details summary::-webkit-details-marker {
 }
 .left {
     float:left;
-    min-width: 95%;
+    width: 95%;
     color: white;
     font-size: 16.7px;
     display:flex;
@@ -83,8 +82,7 @@ details summary::-webkit-details-marker {
     background-color: #cfcfcf;
     border-radius: 15px;
     padding: 1vw;
-    margin-right: 1vw;
-    width: 14.05;
+    width: 14.05rem;
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);    
 }
 
@@ -142,13 +140,13 @@ details summary::-webkit-details-marker {
 .detail_info {
     margin-left: 1.5vw;
     padding: 0.5vw;
-    width: 95%;
+    max-width: 95%;
 }
 
 .popis {
     margin: 0.5vw 0 0.5vw 1vw;
     overflow-wrap: break-word;
-    max-width: 90%;
+    width: 90%;
 }
 
 
@@ -161,7 +159,7 @@ details summary::-webkit-details-marker {
 
 .nadpis_detail {
     margin: 0.5vw 0 0.5vw 0;
-    max-width: 20%;
+    width: 20%;
 }
 .item {
     margin-bottom: 0.5em;
